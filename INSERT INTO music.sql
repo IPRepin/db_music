@@ -60,11 +60,23 @@ VALUES
 
 INSERT INTO genre_performers (genre_id, performers_id)
 VALUES
-(1, 2)
-(1, 3)
-(2, 1)
-(2, 6)
-(3, 4)
-(4, 8)
-(5, 5)
+(1, 2),
+(1, 3),
+(2, 1),
+(2, 6),
+(3, 4),
+(4, 8),
+(5, 5),
 (5, 7)
+
+INSERT INTO album_performers (album_id, performers_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8)
+
