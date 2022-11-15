@@ -13,11 +13,15 @@ GROUP BY music_album_id;
 SELECT DISTINCT p.name FROM performers AS p
 LEFT JOIN album_performers AS ap ON p.performers_id = ap.performers_id
 LEFT JOIN music_album AS ma ON ap.performers_id = ma.music_album_id
-WHERE year_of_release < '2020-01-01';
+WHERE year_of_release !='2020-01-01';
 
-SELECT DISTINCT c.name FROM collection AS c
-LEFT JOIN performers AS p ON c.performers_id = p.performers_id
-WHERE p.performers_id = 2;
+SELECT c.name AS collection FROM collection c 
+JOIN collection_tracks ct ON c.collection_id = cs.collection_id 
+JOIN tracks t ON s.tracks_id = ct.tracks 
+JOIN music_album ma ON ma.music_album_id = t.music_album_id 
+JOIN album_performers ap ON ap.album_id = ma.music_album_id 
+JOIN performers p ON ap.artist_id = p.performers_id 
+WHERE p.performers_id = 2
 
 SELECT DISTINCT c.name FROM collection AS c
 LEFT JOIN album_performers AS ap ON c.collection_id = ap.album_performers_id
