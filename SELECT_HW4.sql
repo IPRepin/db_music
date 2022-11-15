@@ -1,13 +1,14 @@
 SELECT genre_id, COUNT(performers_id) FROM genre_performers
 GROUP BY genre_id;
 
-SELECT COUNT(tracks_id) FROM tracks
-WHERE music_album_id IN(
-    SELECT tracks_id FROM music_album
-	WHERE year_of_release BETWEEN '2019-01-01' AND '2020-01-01');
+SELECT COUNT(tracks_id) FROM tracks as t
+LEFT JOIN music_album as ma ON ma.music_album_id = t.music_album_id
+WHERE year_of_release BETWEEN '2019-01-01' AND '2020-01-01';
 
 SELECT music_album_id, AVG(duration) FROM tracks
 GROUP BY music_album_id;
+
+
 
 SELECT DISTINCT p.name FROM performers AS p
 LEFT JOIN album_performers AS ap ON p.performers_id = ap.performers_id
@@ -15,7 +16,7 @@ LEFT JOIN music_album AS ma ON ap.performers_id = ma.music_album_id
 WHERE year_of_release < '2020-01-01';
 
 SELECT DISTINCT c.name FROM collection AS c
-LEFT JOIN performers AS p ON c.collection_id = p.performers_id
+LEFT JOIN performers AS p ON c.performers_id = p.performers_id
 WHERE p.performers_id = 2;
 
 SELECT DISTINCT c.name FROM collection AS c

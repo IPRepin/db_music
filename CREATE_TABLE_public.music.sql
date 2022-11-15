@@ -25,7 +25,7 @@ CREATE TABLE public.tracks
     tracks_id integer NOT NULL,
     name varchar(128) unique NOT NULL,
     duration integer NOT NULL,
-    music_album_id integer REFERENCES music_album(music_album_id),
+    music_album_id integer   music_album(music_album_id),
 	PRIMARY KEY (tracks_id)
 );
 CREATE TABLE public.collection
